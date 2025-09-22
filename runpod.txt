@@ -1,0 +1,22 @@
+apt update 
+apt upgrade -y
+apt install screen unzip nano -y 
+
+mkdir -p /workspace/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /workspace/miniconda3/miniconda.sh
+bash /workspace/miniconda3/miniconda.sh -b -u -p /workspace/miniconda3
+rm /workspace/miniconda3/miniconda.sh
+
+source /workspace/miniconda3/bin/activate
+
+conda create -n fuse python=3.10 -y
+conda activate fuse
+pip3 install torch torchvision
+
+
+Install runpodctl
+wget -qO- cli.runpod.net | sudo bash
+Create an API key on the interface
+runpodctl config --apiKey [API_KEY]
+On local machine: runpodctl send [YOUR_FILE] -> runpodctl receive 8338-galileo-collect-fidel
+On server: runpodctl receive 8338-galileo-collect-fidel
