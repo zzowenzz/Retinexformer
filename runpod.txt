@@ -11,7 +11,7 @@ source /workspace/miniconda3/bin/activate
 
 conda create -n fuse python=3.10 -y
 conda activate fuse
-pip3 install torch torchvision
+pip install torch torchvision
 
 
 Install runpodctl
