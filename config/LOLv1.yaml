@@ -1,0 +1,49 @@
+train:
+  name: "restormer_turbidity"
+  batch_size: !!int 1
+  num_epochs: !!int 100
+  input: /home/owen/data/LOLv1/Train_tiny/input
+  target: /home/owen/data/LOLv1/Train_tiny/target
+  num_workers: !!int 16
+  pin_memory: !!bool true
+  save_interval: !!int 10
+  val_interval: !!int 1
+  resume: ~
+
+  transform:
+    resize_h: 256
+    resize_w: 256
+    crop_size: ~
+    horizontal_flip_prob: ~
+    brightness_contrast_prob: ~
+    normalize_mean: ~
+    normalize_std: ~
+  
+  # Optimizer configuration
+  optimizer:
+    type: AdamW
+    lr: !!float 1e-4
+    weight_decay: !!float 1e-4
+  
+  # Learning rate scheduler
+  scheduler:
+    type: StepLR
+    step_size: !!int 30
+    gamma: !!float 0.5
+
+val:
+  batch_size: !!int 1
+  input: /home/owen/data/LOLv1/Test_tiny/input
+  target: /home/owen/data/LOLv1/Test_tiny/target
+  num_workers: !!int 16
+  pin_memory: !!bool true
+  ckpt_path: /home/owen/code/Retinexformer/logs/restormer_turbidity_20250922_122430/best.pt
+  # ... other validation parameters
+
+model:
+  type: RetinexFormer
+  in_channels: 3
+  out_channels: 3
+  n_feat: 40
+  stage: 1
+  num_blocks: [1,2,2]
