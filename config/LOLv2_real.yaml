@@ -2,8 +2,8 @@ train:
   name: "restormer_turbidity"
   batch_size: !!int 1
   num_epochs: !!int 100
-  input: /home/owen/data/LOLv1/Train_tiny/input
-  target: /home/owen/data/LOLv1/Train_tiny/target
+  input: /home/owen/data/LOL_v2/Real_captured/Train/Low
+  target: /home/owen/data/LOL_v2/Real_captured/Train/Normal
   num_workers: !!int 16
   pin_memory: !!bool true
   save_interval: !!int 10
