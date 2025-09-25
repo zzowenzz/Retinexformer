@@ -37,7 +37,7 @@ val:
   target: /home/owen/data/LOL_v1/Test/target
   num_workers: !!int 16
   pin_memory: !!bool true
-  ckpt_path: /home/owen/code/Retinexformer/logs/restormer_turbidity_20250922_120030/best.pt
+  ckpt_path: /home/owen/code/Retinexformer/logs/restormer_turbidity_20250925_101643/best.pt
   # ... other validation parameters
 
 model:
